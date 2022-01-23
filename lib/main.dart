@@ -75,7 +75,12 @@ class _MyHomePageState extends State<MyHomePage> {
             // , left: 30.0, right: 30.0
             top: 70.0,
             bottom: 20.0),
-        children: <Widget>[_user(), _cardscroller()],
+        children: <Widget>[
+          _user(),
+          _cardscroller(),
+          _sendMoney(),
+          Container(margin: const EdgeInsets.only(top: 15.0), child: _people())
+        ],
       ),
     );
   }
@@ -92,7 +97,7 @@ Widget _userText() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(left: 40.0),
+              margin: const EdgeInsets.only(left: 30.0),
               child: const Text(
                 '지인이',
                 style: TextStyle(
@@ -158,8 +163,207 @@ Widget _user() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(right: 40.0),
+              margin: const EdgeInsets.only(right: 30.0),
               child: const Icon(Icons.person, color: Colors.white, size: 30.0)),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _sendMoney() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(left: 30.0, top: 5.0),
+              child: const Text(
+                'Send Money',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              )),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(top: 7.0), child: _moreText()),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _moreText() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(right: 3.0),
+              child: const Text(
+                '더보기',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15),
+              )),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(right: 30.0),
+              child: IconButton(
+                // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
+                padding: EdgeInsets.zero, // 패딩 설정
+                constraints: const BoxConstraints(), // constraints
+                icon: const Icon(Icons.arrow_forward_ios_rounded),
+                color: Colors.white,
+                iconSize: 15.0,
+                onPressed: () {},
+              )),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _people() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            margin: const EdgeInsets.only(left: 15.0),
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+                color: Colors.grey[350],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.add_rounded, size: 35.0),
+          ),
+          Container(
+              margin: const EdgeInsets.only(top: 10.0, left: 15.0),
+              child: const Text('추가하기',
+                  style: TextStyle(color: Colors.white, fontSize: 13)))
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+                color: Colors.grey[350],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.person_rounded, size: 35.0),
+          ),
+          Container(
+              margin: const EdgeInsets.only(top: 10.0),
+              child: const Text('친구 1',
+                  style: TextStyle(color: Colors.white, fontSize: 13)))
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+                color: Colors.grey[350],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.person_rounded, size: 35.0),
+          ),
+          Container(
+              margin: const EdgeInsets.only(top: 10.0),
+              child: const Text('친구 2',
+                  style: TextStyle(color: Colors.white, fontSize: 13)))
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+                color: Colors.grey[350],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.person_rounded, size: 35.0),
+          ),
+          Container(
+              margin: const EdgeInsets.only(top: 10.0),
+              child: const Text('친구 3',
+                  style: TextStyle(color: Colors.white, fontSize: 13)))
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            margin: const EdgeInsets.only(right: 15.0),
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+                color: Colors.grey[350],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.person_rounded, size: 35.0),
+          ),
+          Container(
+              margin: const EdgeInsets.only(top: 10.0, right: 15.0),
+              child: const Text('친구 4',
+                  style: TextStyle(color: Colors.white, fontSize: 13)))
         ],
       ),
     ],
@@ -352,7 +556,7 @@ Widget _cardLine() {
         crossAxisAlignment: CrossAxisAlignment.start,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [_card()],
+        children: [_maincard()],
       ),
       Column(
         // mainAxisAlignment: MainAxisAlignment.start,
@@ -366,7 +570,7 @@ Widget _cardLine() {
         crossAxisAlignment: CrossAxisAlignment.start,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [_card()],
+        children: [_othercard()],
       ),
       Column(
         // mainAxisAlignment: MainAxisAlignment.start,
@@ -380,7 +584,7 @@ Widget _cardLine() {
         crossAxisAlignment: CrossAxisAlignment.start,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [_card()],
+        children: [_pluscard()],
       ),
       Column(
         // mainAxisAlignment: MainAxisAlignment.start,
@@ -393,7 +597,7 @@ Widget _cardLine() {
   );
 }
 
-Widget _card() {
+Widget _maincard() {
   return Column(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     // Row에서는 mainAxis가 가로, crossAxis가 세로
@@ -409,7 +613,7 @@ Widget _card() {
                 topRight: Radius.circular(25),
                 topLeft: Radius.circular(25)) //모서리를 둥글게
             ),
-        child: Container(child: _money()),
+        child: Container(child: _maindetails()),
       ),
       Container(
         width: 200,
@@ -422,6 +626,71 @@ Widget _card() {
                 bottomLeft: Radius.circular(25)) //모서리를 둥글게
             ),
         child: _cardUnder(),
+      ),
+    ],
+  );
+}
+
+Widget _othercard() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    // Row에서는 mainAxis가 가로, crossAxis가 세로
+    // Column에서는 crossAxis가 가로, mainAxis가 세로
+    children: <Widget>[
+      Container(
+        width: 200,
+        height: 225,
+        margin: const EdgeInsets.only(top: 25.0),
+        decoration: const BoxDecoration(
+            color: Color(0xFF05232B),
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(25),
+                topLeft: Radius.circular(25)) //모서리를 둥글게
+            ),
+        child: Container(child: _money2()),
+      ),
+      Container(
+        width: 200,
+        height: 60,
+        margin: const EdgeInsets.only(bottom: 20.0),
+        decoration: BoxDecoration(
+            color: Colors.grey[350],
+            borderRadius: const BorderRadius.only(
+                bottomRight: Radius.circular(25),
+                bottomLeft: Radius.circular(25)) //모서리를 둥글게
+            ),
+        child: _cardUnder(),
+      ),
+    ],
+  );
+}
+
+Widget _pluscard() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    // Row에서는 mainAxis가 가로, crossAxis가 세로
+    // Column에서는 crossAxis가 가로, mainAxis가 세로
+    children: <Widget>[
+      Container(
+        width: 200,
+        height: 285,
+        margin: const EdgeInsets.only(top: 25.0),
+        decoration: BoxDecoration(
+            color: Colors.grey[400],
+            borderRadius: const BorderRadius.all(Radius.circular(25)) //모서리를 둥글게
+            ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            IconButton(
+              icon: const Icon(Icons.add_rounded),
+              color: const Color(0xFF123740),
+              iconSize: 60.0,
+              onPressed: () {},
+            ),
+          ],
+        ),
       ),
     ],
   );
@@ -449,7 +718,25 @@ Widget _cardUnder() {
   );
 }
 
-Widget _money() {
+Widget _maindetails() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    // Row에서는 mainAxis가 가로, crossAxis가 세로
+    // Column에서는 crossAxis가 가로, mainAxis가 세로
+    children: <Widget>[
+      Container(
+        width: 50,
+        height: 50,
+        margin: const EdgeInsets.only(top: 20.0),
+        child:
+            const Icon(Icons.check_circle_outline_rounded, color: Colors.white),
+      ),
+    ],
+  );
+}
+
+Widget _money1() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.start,
     children: <Widget>[
@@ -463,6 +750,59 @@ Widget _money() {
               margin: const EdgeInsets.only(top: 185.0, left: 18.0),
               child: Text(
                 '87,960 원',
+                style: TextStyle(
+                    color: Colors.grey[350],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              )),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(width: 5),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(top: 187.0),
+              child: IconButton(
+                // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
+                padding: EdgeInsets.zero, // 패딩 설정
+                constraints: const BoxConstraints(), // constraints
+                icon: const Icon(Icons.arrow_forward_ios_rounded),
+                color: Colors.grey[350],
+                iconSize: 18.0,
+                onPressed: () {},
+              )),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _money2() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(top: 185.0, left: 18.0),
+              child: Text(
+                '23,850 원',
                 style: TextStyle(
                     color: Colors.grey[350],
                     fontWeight: FontWeight.bold,
