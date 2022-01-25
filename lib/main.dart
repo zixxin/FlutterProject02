@@ -379,7 +379,7 @@ Widget _menus() {
     crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
       Container(
-          padding: const EdgeInsets.only(left: 40.0, right: 40.0),
+          padding: const EdgeInsets.only(left: 40.0, right: 43.0),
           margin: const EdgeInsets.only(top: 8.0),
           width: 340,
           height: 55,
@@ -508,6 +508,19 @@ Widget _maincardDetails() {
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
+      Container(child: _stars()),
+      Container(
+          margin: const EdgeInsets.only(top: 45.0, left: 18.0),
+          child: _money1()),
+    ],
+  );
+}
+
+Widget _mainInfo() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: <Widget>[
       Container(
           margin: const EdgeInsets.only(top: 18.0, left: 18.0),
           child: Text(
@@ -526,9 +539,41 @@ Widget _maincardDetails() {
                 // fontWeight: FontWeight.bold,
                 fontSize: 12),
           )),
-      Container(
-          margin: const EdgeInsets.only(top: 45.0, left: 18.0),
-          child: _money1()),
+    ],
+  );
+}
+
+Widget _stars() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [Container(child: _mainInfo())],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 8.0, right: 16.0),
+            child: IconButton(
+              // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
+              padding: EdgeInsets.zero, // 패딩 설정
+              constraints: const BoxConstraints(), // constraints
+              icon: const Icon(Icons.check_rounded),
+              color: Colors.grey[350],
+              iconSize: 28.0,
+              onPressed: () {},
+            ),
+          ),
+        ],
+      ),
     ],
   );
 }
@@ -671,56 +716,13 @@ Widget _othercardDetails() {
           )),
       Container(
           margin: const EdgeInsets.only(top: 45.0, left: 18.0),
-          child: _money2()),
-    ],
-  );
-}
-
-Widget _money2() {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.start,
-    children: <Widget>[
-      Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // Row에서는 mainAxis가 가로, crossAxis가 세로
-        // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [
-          Text(
+          child: Text(
             '23,850 원',
             style: TextStyle(
                 color: Colors.grey[350],
                 fontWeight: FontWeight.bold,
                 fontSize: 18),
-          ),
-        ],
-      ),
-      Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // Row에서는 mainAxis가 가로, crossAxis가 세로
-        // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [
-          Container(width: 5),
-        ],
-      ),
-      Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // Row에서는 mainAxis가 가로, crossAxis가 세로
-        // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [
-          IconButton(
-            // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
-            padding: EdgeInsets.zero, // 패딩 설정
-            constraints: const BoxConstraints(), // constraints
-            icon: const Icon(Icons.arrow_forward_ios_rounded),
-            color: Colors.grey[350],
-            iconSize: 18.0,
-            onPressed: () {},
-          ),
-        ],
-      ),
+          )),
     ],
   );
 }
