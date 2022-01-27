@@ -64,7 +64,7 @@ class _MainScreenPage extends State<MainScreenPage> {
           _menus(),
           Container(height: 25),
           _sendMoney(),
-          Container(margin: const EdgeInsets.only(top: 15.0), child: _people())
+          Container(margin: const EdgeInsets.only(top: 15.0), child: _people()),
         ],
       ),
     );
@@ -485,7 +485,7 @@ Widget _mainCard(BuildContext context) {
           boxShadow: [
             BoxShadow(
               color: Colors.grey[900]!,
-              offset: const Offset(5.0, 10.0), //(x,y)
+              offset: const Offset(10.0, 10.0), //(x,y)
               blurRadius: 10.0,
             ),
           ],
@@ -712,7 +712,7 @@ Widget _otherCard() {
             boxShadow: [
               BoxShadow(
                 color: Colors.grey[900]!,
-                offset: const Offset(5.0, 10.0), //(x,y)
+                offset: const Offset(10.0, 10.0), //(x,y)
                 blurRadius: 10.0,
               ),
             ],
