@@ -219,7 +219,7 @@ Widget _moreText() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(right: 30.0, top: 3.0),
+              margin: const EdgeInsets.only(right: 30.0, top: 2.0),
               child: IconButton(
                 // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
                 padding: EdgeInsets.zero, // 패딩 설정
@@ -385,7 +385,7 @@ Widget _menudetails() {
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: const [
-          Text('간편 이체',
+          Text('간편 출금',
               style: TextStyle(
                   color: Color(0xFF123740),
                   fontSize: 18.0,
@@ -405,7 +405,7 @@ Widget _menudetails() {
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: const [
-          Text('출금',
+          Text('이체',
               style: TextStyle(
                   color: Color(0xFF123740),
                   fontSize: 18.0,
@@ -463,22 +463,36 @@ Widget _mainCard(BuildContext context) {
           height: 140,
           margin: const EdgeInsets.only(top: 20.0),
           decoration: const BoxDecoration(
-              color: Color(0xFF05232B),
-              borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(20),
-                  topLeft: Radius.circular(20)) //모서리를 둥글게
+            color: Color(0xFF05232B),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                offset: Offset(5.0, 12.0), //(x,y)
+                blurRadius: 10.0,
               ),
+            ],
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20),
+                topLeft: Radius.circular(20)), //모서리를 둥글게
+          ),
           child: _maincardDetails(context)),
       Container(
         width: 295,
         height: 55,
         margin: const EdgeInsets.only(bottom: 20.0),
         decoration: BoxDecoration(
-            color: Colors.grey[350],
-            borderRadius: const BorderRadius.only(
-                bottomRight: Radius.circular(20),
-                bottomLeft: Radius.circular(20)) //모서리를 둥글게
+          color: Colors.grey[350],
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey[900]!,
+              offset: const Offset(5.0, 10.0), //(x,y)
+              blurRadius: 10.0,
             ),
+          ],
+          borderRadius: const BorderRadius.only(
+              bottomRight: Radius.circular(20),
+              bottomLeft: Radius.circular(20)), //모서리를 둥글게
+        ),
         child: _mainCardUnder(),
       ),
     ],
@@ -678,6 +692,13 @@ Widget _otherCard() {
           margin: const EdgeInsets.only(top: 20.0),
           decoration: const BoxDecoration(
               color: Color(0xFF123740),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  offset: Offset(5.0, 12.0), //(x,y)
+                  blurRadius: 10.0,
+                ),
+              ],
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20),
                   topLeft: Radius.circular(20)) //모서리를 둥글게
@@ -688,6 +709,13 @@ Widget _otherCard() {
         height: 55,
         margin: const EdgeInsets.only(bottom: 20.0),
         decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey[900]!,
+                offset: const Offset(5.0, 10.0), //(x,y)
+                blurRadius: 10.0,
+              ),
+            ],
             color: Colors.grey[350],
             borderRadius: const BorderRadius.only(
                 bottomRight: Radius.circular(20),
