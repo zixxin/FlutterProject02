@@ -19,8 +19,8 @@ class _MainScreenPage extends State<MainScreenPage> {
       backgroundColor: const Color(0xFF224952),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: const Color(0xFF123740),
-        selectedItemColor: Colors.white,
+        backgroundColor: Colors.grey[350],
+        selectedItemColor: const Color(0xFF224952),
         unselectedItemColor: Colors.grey,
         selectedFontSize: 14,
         unselectedFontSize: 14,
@@ -52,19 +52,22 @@ class _MainScreenPage extends State<MainScreenPage> {
           ),
         ],
       ),
-      body: ListView(
-        // ListView : 스크롤 가능 (children)
-        padding: const EdgeInsets.only(top: 70.0, bottom: 20.0),
-        children: <Widget>[
-          _user(),
-          _cardSlider(context),
-          Container(
-              margin: const EdgeInsets.only(top: 15.0, left: 25.0, right: 25.0),
-              child: _menusLine1(context)),
-          // Container(
-          //     margin: const EdgeInsets.only(top: 15.0, left: 25.0, right: 25.0),
-          //     child: _menusLine2(context)),
-        ],
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.only(top: 70.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Container(child: _user()),
+            Container(child: _cardSlider(context)),
+            Container(
+                margin: const EdgeInsets.only(left: 25.0, right: 25.0),
+                child: _menus(context)),
+            Container(
+                margin: const EdgeInsets.only(top: 25.0),
+                child: _others(context)),
+          ],
+        ),
       ),
     );
   }
@@ -155,7 +158,84 @@ Widget _user() {
   );
 }
 
-Widget _menusLine1(BuildContext context) {
+Widget _menus(BuildContext context) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              padding:
+                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+              child: const Text('Send', style: TextStyle(color: Colors.white))),
+          Container(
+              padding:
+                  const EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
+              child: const Text('Send', style: TextStyle(color: Colors.white))),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              padding:
+                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+              child: const Text('Withdraw',
+                  style: TextStyle(color: Colors.white))),
+          Container(
+              padding:
+                  const EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
+              child: const Text('Withdraw',
+                  style: TextStyle(color: Colors.white))),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              padding:
+                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+              child:
+                  const Text('Top Up', style: TextStyle(color: Colors.white))),
+          Container(
+              padding:
+                  const EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
+              child:
+                  const Text('Top Up', style: TextStyle(color: Colors.white))),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              padding:
+                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+              child: const Text('More', style: TextStyle(color: Colors.white))),
+          Container(
+              padding:
+                  const EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
+              child: const Text('More', style: TextStyle(color: Colors.white))),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _others(BuildContext context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -167,151 +247,26 @@ Widget _menusLine1(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              width: MediaQuery.of(context).size.width * 0.29,
-              height: 80,
-              padding:
-                  const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
-              decoration: const BoxDecoration(
-                color: Color(0xFF123740),
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    bottomLeft: Radius.circular(15)), //모서리를 둥글게
-              ),
-              child: Text('입금이체',
-                  style: TextStyle(
-                      color: Colors.grey[350],
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold))),
-        ],
-      ),
-      Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // Row에서는 mainAxis가 가로, crossAxis가 세로
-        // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [
-          Container(
-              width: MediaQuery.of(context).size.width * 0.29,
-              height: 80,
-              padding:
-                  const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
-              decoration: const BoxDecoration(color: Color(0xFF123740)),
-              child: Text('출금이체',
-                  style: TextStyle(
-                      color: Colors.grey[350],
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold))),
-        ],
-      ),
-      Column(
-        // mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // Row에서는 mainAxis가 가로, crossAxis가 세로
-        // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [
-          Container(
-              width: MediaQuery.of(context).size.width * 0.29,
-              height: 80,
-              padding:
-                  const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
-              decoration: const BoxDecoration(
-                color: Color(0xFF123740),
-                borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    bottomRight: Radius.circular(15)), //모서리를 둥글게
-              ),
-              child: Text('자동이체',
-                  style: TextStyle(
-                      color: Colors.grey[350],
-                      fontSize: 15.0,
-                      fontWeight: FontWeight.bold))),
+            width: MediaQuery.of(context).size.width,
+            height: 325,
+            padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
+            decoration: BoxDecoration(
+              color: Colors.grey[350],
+              borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30)), //모서리를 둥글게
+            ),
+          ),
         ],
       ),
     ],
   );
 }
 
-// Widget _menusLine2(BuildContext context) {
-//   return Row(
-//     mainAxisAlignment: MainAxisAlignment.center,
-//     crossAxisAlignment: CrossAxisAlignment.center,
-//     children: <Widget>[
-//       Column(
-//         // mainAxisAlignment: MainAxisAlignment.center,
-//         crossAxisAlignment: CrossAxisAlignment.center,
-//         // Row에서는 mainAxis가 가로, crossAxis가 세로
-//         // Column에서는 crossAxis가 가로, mainAxis가 세로
-//         children: [
-//           Container(
-//               width: MediaQuery.of(context).size.width * 0.29,
-//               height: 80,
-//               padding:
-//                   const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
-//               decoration: const BoxDecoration(
-//                 color: Color(0xFF123740),
-//                 borderRadius: BorderRadius.only(
-//                     topLeft: Radius.circular(15),
-//                     bottomLeft: Radius.circular(15)), //모서리를 둥글게
-//               ),
-//               child: Text('한번에 모으기',
-//                   style: TextStyle(
-//                       color: Colors.grey[350],
-//                       fontSize: 15.0,
-//                       fontWeight: FontWeight.bold))),
-//         ],
-//       ),
-//       Column(
-//         // mainAxisAlignment: MainAxisAlignment.start,
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         // Row에서는 mainAxis가 가로, crossAxis가 세로
-//         // Column에서는 crossAxis가 가로, mainAxis가 세로
-//         children: [
-//           Container(
-//               width: MediaQuery.of(context).size.width * 0.29,
-//               height: 80,
-//               padding:
-//                   const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
-//               decoration: const BoxDecoration(color: Color(0xFF123740)),
-//               child: Text('정보관리',
-//                   style: TextStyle(
-//                       color: Colors.grey[350],
-//                       fontSize: 15.0,
-//                       fontWeight: FontWeight.bold))),
-//         ],
-//       ),
-//       Column(
-//         // mainAxisAlignment: MainAxisAlignment.start,
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         // Row에서는 mainAxis가 가로, crossAxis가 세로
-//         // Column에서는 crossAxis가 가로, mainAxis가 세로
-//         children: [
-//           Container(
-//               width: MediaQuery.of(context).size.width * 0.29,
-//               height: 80,
-//               padding:
-//                   const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
-//               decoration: const BoxDecoration(
-//                 color: Color(0xFF123740),
-//                 borderRadius: BorderRadius.only(
-//                     topRight: Radius.circular(15),
-//                     bottomRight: Radius.circular(15)), //모서리를 둥글게
-//               ),
-//               child: Text('더보기',
-//                   style: TextStyle(
-//                       color: Colors.grey[350],
-//                       fontSize: 15.0,
-//                       fontWeight: FontWeight.bold))),
-//         ],
-//       ),
-//     ],
-//   );
-// }
-
 Widget _cardSlider(BuildContext context) {
   return CarouselSlider(
     options: CarouselOptions(height: 245.0), // 슬라이더 높이 설정
     items: [_oneCard(context), _twoCard(), _threeCard(), _plusCard()].map((i) {
-      //
       return Builder(
         builder: (BuildContext context) {
           // context 사용할 경우 활용 가능
