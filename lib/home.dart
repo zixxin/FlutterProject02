@@ -232,16 +232,373 @@ Widget _others(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-            width: MediaQuery.of(context).size.width,
-            height: 407,
-            padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
-            decoration: BoxDecoration(
-              color: Colors.grey[350],
-              borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(33),
-                  topRight: Radius.circular(33)), //모서리를 둥글게
-            ),
+              width: MediaQuery.of(context).size.width,
+              height: 407,
+              padding:
+                  const EdgeInsets.only(top: 27.0, left: 25.0, right: 25.0),
+              decoration: BoxDecoration(
+                color: Colors.grey[350],
+                borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(33),
+                    topRight: Radius.circular(33)), //모서리를 둥글게
+              ),
+              child: _details()),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _details() {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Container(
+          margin: const EdgeInsets.only(bottom: 27.0), child: _detailsTitle()),
+      Container(
+          margin: const EdgeInsets.only(bottom: 23.0),
+          child: _detailsPeople1()),
+      Container(
+          margin: const EdgeInsets.only(bottom: 23.0),
+          child: _detailsPeople2()),
+      Container(
+          margin: const EdgeInsets.only(bottom: 23.0),
+          child: _detailsPeople3()),
+      Container(
+          margin: const EdgeInsets.only(bottom: 23.0),
+          child: _detailsPeople4()),
+      Container(
+          margin: const EdgeInsets.only(bottom: 23.0),
+          child: _detailsPeople5()),
+    ],
+  );
+}
+
+Widget _detailsTitle() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: const [
+          Text('Last Transactions', style: TextStyle(fontSize: 18.0)),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          IconButton(
+            // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
+            padding: EdgeInsets.zero, // 패딩 설정
+            constraints: const BoxConstraints(), // constraints
+            icon: const Icon(Icons.arrow_forward_ios_rounded),
+            iconSize: 20.0,
+            onPressed: () {},
           ),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _detailsPeople1() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [_icon1()],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: const [
+          Text('- 24,800 원',
+              style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _icon1() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(right: 18.0),
+              child: Image.asset("img/money.png", width: 25, height: 25)),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          const Text('(주)카카오선물하기',
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('Thursday, 3 Feb', style: TextStyle(color: Colors.grey[600])),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _detailsPeople2() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [_icon2()],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: const [
+          Text('+ 100,000 원',
+              style: TextStyle(
+                  color: Color(0xFF224952),
+                  fontSize: 17.0,
+                  fontWeight: FontWeight.bold)),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _icon2() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(right: 18.0),
+              child: Image.asset("img/paperplane.png", width: 25, height: 25)),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          const Text('용돈',
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('Tuesday, 1 Feb', style: TextStyle(color: Colors.grey[600])),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _detailsPeople3() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [_icon3()],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: const [
+          Text('- 17,600 원',
+              style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _icon3() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(right: 18.0),
+              child: Image.asset("img/money.png", width: 25, height: 25)),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          const Text('버거킹 한동대점',
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('Friday, 28 Jan', style: TextStyle(color: Colors.grey[600])),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _detailsPeople4() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [_icon4()],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: const [
+          Text('- 1,100 원',
+              style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _icon4() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(right: 18.0),
+              child: Image.asset("img/money.png", width: 25, height: 25)),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          const Text('APPLE',
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('Monday, 24 Jan', style: TextStyle(color: Colors.grey[600])),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _detailsPeople5() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [_icon5()],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: const [
+          Text('+ 3,510 원',
+              style: TextStyle(
+                  fontSize: 17.0,
+                  color: Color(0xFF224952),
+                  fontWeight: FontWeight.bold)),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _icon5() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(right: 18.0),
+              child: Image.asset("img/money.png", width: 25, height: 25)),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          const Text('(주)카카오선물하기',
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('Friday, 21 Jan', style: TextStyle(color: Colors.grey[600])),
         ],
       ),
     ],
