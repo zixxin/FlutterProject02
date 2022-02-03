@@ -17,11 +17,13 @@ class _MainScreenPage extends State<MainScreenPage> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
+      //If you want to show body behind the navbar, it should be true
+      extendBody: true,
       backgroundColor: const Color(0xFF224952),
       bottomNavigationBar: FloatingNavbar(
-        backgroundColor: Colors.grey[350],
-        selectedItemColor: const Color(0xFF224952),
-        selectedBackgroundColor: Colors.grey[350],
+        backgroundColor: const Color(0xFF224952),
+        selectedItemColor: Colors.white,
+        selectedBackgroundColor: const Color(0xFF224952),
         unselectedItemColor: Colors.grey,
         iconSize: displaysize.width * 0.08,
         borderRadius: 20,
@@ -231,13 +233,13 @@ Widget _others(BuildContext context) {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 200,
+            height: 407,
             padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
             decoration: BoxDecoration(
               color: Colors.grey[350],
               borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(30),
-                  topRight: Radius.circular(30)), //모서리를 둥글게
+                  topLeft: Radius.circular(33),
+                  topRight: Radius.circular(33)), //모서리를 둥글게
             ),
           ),
         ],
