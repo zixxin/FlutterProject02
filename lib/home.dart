@@ -170,13 +170,21 @@ Widget _menus(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              padding:
-                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-              child: const Text('Send', style: TextStyle(color: Colors.white))),
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: IconButton(
+              // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
+              padding: EdgeInsets.zero, // 패딩 설정
+              constraints: const BoxConstraints(), // constraints
+              icon: const Icon(Icons.ios_share_rounded),
+              color: Colors.grey[350],
+              iconSize: 28.0,
+              onPressed: () {},
+            ),
+          ),
           Container(
               padding:
-                  const EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
-              child: const Text('Send', style: TextStyle(color: Colors.white))),
+                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+              child: Text('Send', style: TextStyle(color: Colors.grey[350]))),
         ],
       ),
       Column(
@@ -186,33 +194,22 @@ Widget _menus(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              padding:
-                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-              child: const Text('Withdraw',
-                  style: TextStyle(color: Colors.white))),
-          Container(
-              padding:
-                  const EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
-              child: const Text('Withdraw',
-                  style: TextStyle(color: Colors.white))),
-        ],
-      ),
-      Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        // Row에서는 mainAxis가 가로, crossAxis가 세로
-        // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: IconButton(
+              // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
+              padding: EdgeInsets.zero, // 패딩 설정
+              constraints: const BoxConstraints(), // constraints
+              icon: const Icon(Icons.ios_share_rounded),
+              color: Colors.grey[350],
+              iconSize: 28.0,
+              onPressed: () {},
+            ),
+          ),
           Container(
               padding:
                   const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
               child:
-                  const Text('Top Up', style: TextStyle(color: Colors.white))),
-          Container(
-              padding:
-                  const EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
-              child:
-                  const Text('Top Up', style: TextStyle(color: Colors.white))),
+                  Text('Withdraw', style: TextStyle(color: Colors.grey[350]))),
         ],
       ),
       Column(
@@ -222,13 +219,45 @@ Widget _menus(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              padding:
-                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-              child: const Text('More', style: TextStyle(color: Colors.white))),
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: IconButton(
+              // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
+              padding: EdgeInsets.zero, // 패딩 설정
+              constraints: const BoxConstraints(), // constraints
+              icon: const Icon(Icons.add_circle_outline_rounded),
+              color: Colors.grey[350],
+              iconSize: 28.0,
+              onPressed: () {},
+            ),
+          ),
           Container(
               padding:
-                  const EdgeInsets.only(top: 15.0, left: 20.0, right: 20.0),
-              child: const Text('More', style: TextStyle(color: Colors.white))),
+                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+              child: Text('Top Up', style: TextStyle(color: Colors.grey[350]))),
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+            child: IconButton(
+              // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
+              padding: EdgeInsets.zero, // 패딩 설정
+              constraints: const BoxConstraints(), // constraints
+              icon: const Icon(Icons.menu),
+              color: Colors.grey[350],
+              iconSize: 28.0,
+              onPressed: () {},
+            ),
+          ),
+          Container(
+              padding:
+                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+              child: Text('More', style: TextStyle(color: Colors.grey[350]))),
         ],
       ),
     ],
@@ -248,7 +277,7 @@ Widget _others(BuildContext context) {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 325,
+            height: 300,
             padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
             decoration: BoxDecoration(
               color: Colors.grey[350],
