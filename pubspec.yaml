@@ -66,6 +66,10 @@ flutter:
   assets:
     - img/app_logo.png
     - img/master_card.png
+    - img/collect.png
+    - img/send.png
+    - img/withdraw.png
+    - img/more.png
 
 
 flutter_icons:

@@ -49,7 +49,8 @@ class _MainScreenPage extends State<MainScreenPage> {
             Container(child: _user()),
             Container(child: _cardSlider(context)),
             Container(
-                margin: const EdgeInsets.only(left: 25.0, right: 25.0),
+                margin:
+                    const EdgeInsets.only(top: 7.0, left: 25.0, right: 25.0),
                 child: _menus(context)),
             Container(
                 margin: const EdgeInsets.only(top: 25.0),
@@ -158,17 +159,8 @@ Widget _menus(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-            child: IconButton(
-              // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
-              padding: EdgeInsets.zero, // 패딩 설정
-              constraints: const BoxConstraints(), // constraints
-              icon: const Icon(Icons.attach_money_rounded),
-              color: Colors.grey[350],
-              iconSize: 28.0,
-              onPressed: () {},
-            ),
-          ),
+              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Image.asset("img/send.png", width: 33, height: 33)),
           Container(
               padding:
                   const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
@@ -182,17 +174,8 @@ Widget _menus(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-            child: IconButton(
-              // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
-              padding: EdgeInsets.zero, // 패딩 설정
-              constraints: const BoxConstraints(), // constraints
-              icon: const Icon(Icons.ios_share_rounded),
-              color: Colors.grey[350],
-              iconSize: 28.0,
-              onPressed: () {},
-            ),
-          ),
+              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Image.asset("img/withdraw.png", width: 33, height: 33)),
           Container(
               padding:
                   const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
@@ -207,21 +190,13 @@ Widget _menus(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-            child: IconButton(
-              // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
-              padding: EdgeInsets.zero, // 패딩 설정
-              constraints: const BoxConstraints(), // constraints
-              icon: const Icon(Icons.add_circle_outline_rounded),
-              color: Colors.grey[350],
-              iconSize: 28.0,
-              onPressed: () {},
-            ),
-          ),
+              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Image.asset("img/collect.png", width: 33, height: 33)),
           Container(
               padding:
                   const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-              child: Text('Top Up', style: TextStyle(color: Colors.grey[350]))),
+              child:
+                  Text('Collect', style: TextStyle(color: Colors.grey[350]))),
         ],
       ),
       Column(
@@ -231,17 +206,8 @@ Widget _menus(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-            margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-            child: IconButton(
-              // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
-              padding: EdgeInsets.zero, // 패딩 설정
-              constraints: const BoxConstraints(), // constraints
-              icon: const Icon(Icons.scanner),
-              color: Colors.grey[350],
-              iconSize: 28.0,
-              onPressed: () {},
-            ),
-          ),
+              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+              child: Image.asset("img/more.png", width: 33, height: 33)),
           Container(
               padding:
                   const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
@@ -514,6 +480,10 @@ Widget _cardUnder() {
                     const PopupMenuItem<int>(
                       value: 1,
                       child: Text("카드 관리"),
+                    ),
+                    const PopupMenuItem<int>(
+                      value: 2,
+                      child: Text("테마 변경"),
                     ),
                   ];
                 },
