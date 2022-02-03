@@ -1,3 +1,4 @@
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -17,13 +18,14 @@ class _MainScreenPage extends State<MainScreenPage> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: const Color(0xFF224952),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
+      bottomNavigationBar: FloatingNavbar(
         backgroundColor: Colors.grey[350],
         selectedItemColor: const Color(0xFF224952),
+        selectedBackgroundColor: Colors.grey[350],
         unselectedItemColor: Colors.grey,
-        selectedFontSize: 14,
-        unselectedFontSize: 14,
+        iconSize: displaysize.width * 0.08,
+        borderRadius: 20,
+        margin: const EdgeInsets.only(left: 23, right: 23),
         currentIndex: 0, //현재 선택된 Index
         onTap: (int index) {
           // setState(() {
@@ -31,25 +33,11 @@ class _MainScreenPage extends State<MainScreenPage> {
           // });
         },
         items: [
-          BottomNavigationBarItem(
-            title: const Text('',
-                style: TextStyle(fontSize: 0.0, fontWeight: FontWeight.bold)),
-            icon: Icon(Icons.home_rounded, size: displaysize.width * 0.08),
-          ),
-          BottomNavigationBarItem(
-            title: const Text('', style: TextStyle(fontSize: 0.0)),
-            icon: Icon(Icons.timeline_rounded, size: displaysize.width * 0.08),
-          ),
-          BottomNavigationBarItem(
-            title: const Text('', style: TextStyle(fontSize: 0.0)),
-            icon: Icon(Icons.notifications_outlined,
-                size: displaysize.width * 0.08),
-          ),
-          BottomNavigationBarItem(
-            title: const Text('', style: TextStyle(fontSize: 0.0)),
-            icon:
-                Icon(Icons.more_horiz_rounded, size: displaysize.width * 0.08),
-          ),
+          FloatingNavbarItem(icon: Icons.home_rounded),
+          FloatingNavbarItem(icon: Icons.timeline_rounded),
+          FloatingNavbarItem(icon: Icons.qr_code_scanner_rounded),
+          FloatingNavbarItem(icon: Icons.notifications_outlined),
+          FloatingNavbarItem(icon: Icons.more_horiz_rounded),
         ],
       ),
       body: Container(
@@ -175,7 +163,7 @@ Widget _menus(BuildContext context) {
               // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
               padding: EdgeInsets.zero, // 패딩 설정
               constraints: const BoxConstraints(), // constraints
-              icon: const Icon(Icons.ios_share_rounded),
+              icon: const Icon(Icons.attach_money_rounded),
               color: Colors.grey[350],
               iconSize: 28.0,
               onPressed: () {},
@@ -248,7 +236,7 @@ Widget _menus(BuildContext context) {
               // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
               padding: EdgeInsets.zero, // 패딩 설정
               constraints: const BoxConstraints(), // constraints
-              icon: const Icon(Icons.menu),
+              icon: const Icon(Icons.scanner),
               color: Colors.grey[350],
               iconSize: 28.0,
               onPressed: () {},
@@ -277,7 +265,7 @@ Widget _others(BuildContext context) {
         children: [
           Container(
             width: MediaQuery.of(context).size.width,
-            height: 300,
+            height: 200,
             padding: const EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0),
             decoration: BoxDecoration(
               color: Colors.grey[350],
