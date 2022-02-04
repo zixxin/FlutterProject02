@@ -328,7 +328,7 @@ Widget _detailsPeople1() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: const [
           Text('- 24,800 원',
-              style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
         ],
       ),
     ],
@@ -347,7 +347,7 @@ Widget _icon1() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(right: 18.0),
+              margin: const EdgeInsets.only(right: 20.0),
               child: Image.asset("img/money.png", width: 25, height: 25)),
         ],
       ),
@@ -388,7 +388,7 @@ Widget _detailsPeople2() {
           Text('+ 100,000 원',
               style: TextStyle(
                   color: Color(0xFF224952),
-                  fontSize: 17.0,
+                  fontSize: 16.0,
                   fontWeight: FontWeight.bold)),
         ],
       ),
@@ -408,7 +408,7 @@ Widget _icon2() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(right: 18.0),
+              margin: const EdgeInsets.only(right: 20.0),
               child: Image.asset("img/paperplane.png", width: 25, height: 25)),
         ],
       ),
@@ -447,7 +447,7 @@ Widget _detailsPeople3() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: const [
           Text('- 17,600 원',
-              style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
         ],
       ),
     ],
@@ -466,7 +466,7 @@ Widget _icon3() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(right: 18.0),
+              margin: const EdgeInsets.only(right: 20.0),
               child: Image.asset("img/money.png", width: 25, height: 25)),
         ],
       ),
@@ -505,7 +505,7 @@ Widget _detailsPeople4() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: const [
           Text('- 1,100 원',
-              style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
+              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
         ],
       ),
     ],
@@ -524,7 +524,7 @@ Widget _icon4() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(right: 18.0),
+              margin: const EdgeInsets.only(right: 20.0),
               child: Image.asset("img/money.png", width: 25, height: 25)),
         ],
       ),
@@ -564,7 +564,7 @@ Widget _detailsPeople5() {
         children: const [
           Text('+ 3,510 원',
               style: TextStyle(
-                  fontSize: 17.0,
+                  fontSize: 16.0,
                   color: Color(0xFF224952),
                   fontWeight: FontWeight.bold)),
         ],
@@ -585,7 +585,7 @@ Widget _icon5() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(right: 18.0),
+              margin: const EdgeInsets.only(right: 20.0),
               child: Image.asset("img/money.png", width: 25, height: 25)),
         ],
       ),
