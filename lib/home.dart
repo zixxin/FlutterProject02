@@ -19,11 +19,11 @@ class _MainScreenPage extends State<MainScreenPage> {
       extendBodyBehindAppBar: true,
       //If you want to show body behind the navbar, it should be true
       extendBody: true,
-      backgroundColor: const Color(0xFF224952),
+      backgroundColor: const Color(0xFF030404),
       bottomNavigationBar: FloatingNavbar(
-        backgroundColor: const Color(0xFF224952),
+        backgroundColor: const Color(0xFF030404),
         selectedItemColor: Colors.white,
-        selectedBackgroundColor: const Color(0xFF224952),
+        selectedBackgroundColor: const Color(0xFF030404),
         unselectedItemColor: Colors.grey,
         iconSize: displaysize.width * 0.08,
         borderRadius: 20,
@@ -42,25 +42,24 @@ class _MainScreenPage extends State<MainScreenPage> {
           FloatingNavbarItem(icon: Icons.more_horiz_rounded),
         ],
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.only(top: 70.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            Container(child: _user()),
-            Container(child: _cardSlider(context)),
-            Container(
-                margin:
-                    const EdgeInsets.only(top: 7.0, left: 25.0, right: 25.0),
-                child: _menus(context)),
-            Container(
-                margin: const EdgeInsets.only(top: 25.0),
-                child: _others(context)),
-          ],
-        ),
+      body: ListView(
+        // width: MediaQuery.of(context).size.width,
+        // padding: const EdgeInsets.only(top: 70.0),
+        // child: Column(
+        //   mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          Container(margin: const EdgeInsets.only(top: 15.0), child: _user()),
+          Container(child: _cardSlider(context)),
+          Container(
+              margin: const EdgeInsets.only(bottom: 10.0), child: _sendMoney()),
+          Container(margin: const EdgeInsets.only(top: 10.0), child: _people()),
+          Container(
+              margin: const EdgeInsets.only(top: 25.0),
+              child: _others(context)),
+        ],
       ),
     );
+    // );
   }
 }
 
@@ -76,10 +75,10 @@ Widget _userText() {
         children: [
           Container(
               margin: const EdgeInsets.only(left: 30.0),
-              child: const Text(
+              child: Text(
                 '지인이',
                 style: TextStyle(
-                    color: Colors.white,
+                    color: Colors.grey[350],
                     fontWeight: FontWeight.bold,
                     fontSize: 20),
               )),
@@ -107,7 +106,7 @@ Widget _userText() {
             child: Text(
               '닉네임',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.grey[400], fontSize: 13),
+              style: TextStyle(color: Colors.grey[350], fontSize: 13),
             ),
             decoration: BoxDecoration(
               color: Colors.transparent,
@@ -142,78 +141,203 @@ Widget _user() {
         children: [
           Container(
               margin: const EdgeInsets.only(right: 30.0),
-              child: const Icon(Icons.person, color: Colors.white, size: 30.0)),
+              child: Icon(Icons.person, color: Colors.grey[350], size: 30.0)),
         ],
       ),
     ],
   );
 }
 
-Widget _menus(BuildContext context) {
+Widget _sendMoney() {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    crossAxisAlignment: CrossAxisAlignment.center,
     children: <Widget>[
       Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: Image.asset("img/send.png", width: 33, height: 33)),
-          Container(
-              padding:
-                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-              child: Text('Send', style: TextStyle(color: Colors.grey[350]))),
+              margin: const EdgeInsets.only(left: 25.0, top: 5.0),
+              child: Text(
+                'Quick Send',
+                style: TextStyle(
+                    color: Colors.grey[350],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
+              )),
         ],
       ),
       Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: Image.asset("img/withdraw.png", width: 33, height: 33)),
+              margin: const EdgeInsets.only(top: 7.0), child: _moreText()),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _moreText() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.start,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
           Container(
-              padding:
-                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-              child:
-                  Text('Withdraw', style: TextStyle(color: Colors.grey[350]))),
+              margin: const EdgeInsets.only(top: 3.0, right: 3.0),
+              child: Text(
+                '더보기',
+                style: TextStyle(
+                    color: Colors.grey[350],
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15),
+              )),
         ],
       ),
       Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+              margin: const EdgeInsets.only(right: 25.0, top: 2.0),
+              child: IconButton(
+                // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
+                padding: EdgeInsets.zero, // 패딩 설정
+                constraints: const BoxConstraints(), // constraints
+                icon: const Icon(Icons.arrow_forward_ios_rounded),
+                color: Colors.grey[350],
+                iconSize: 15.0,
+                onPressed: () {},
+              )),
+        ],
+      ),
+    ],
+  );
+}
+
+Widget _people() {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: <Widget>[
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: Image.asset("img/collect.png", width: 33, height: 33)),
+            margin: const EdgeInsets.only(left: 25.0),
+            width: 55,
+            height: 55,
+            decoration: BoxDecoration(
+                color: Colors.grey[400],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.add_rounded, size: 27.0),
+          ),
           Container(
-              padding:
-                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-              child:
-                  Text('Collect', style: TextStyle(color: Colors.grey[350]))),
+              margin: const EdgeInsets.only(top: 10.0, left: 25.0),
+              child: Text('추가하기',
+                  style: TextStyle(color: Colors.grey[350], fontSize: 13)))
         ],
       ),
       Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-              child: Image.asset("img/more.png", width: 33, height: 33)),
+            width: 55,
+            height: 55,
+            decoration: BoxDecoration(
+                color: Colors.grey[400],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.person_rounded, size: 30.0),
+          ),
           Container(
-              padding:
-                  const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
-              child: Text('More', style: TextStyle(color: Colors.grey[350]))),
+              margin: const EdgeInsets.only(top: 10.0),
+              child: Text('친구 1',
+                  style: TextStyle(color: Colors.grey[350], fontSize: 13)))
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            width: 55,
+            height: 55,
+            decoration: BoxDecoration(
+                color: Colors.grey[400],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.person_rounded, size: 30.0),
+          ),
+          Container(
+              margin: const EdgeInsets.only(top: 10.0),
+              child: Text('친구 2',
+                  style: TextStyle(color: Colors.grey[350], fontSize: 13)))
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            width: 55,
+            height: 55,
+            decoration: BoxDecoration(
+                color: Colors.grey[400],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.person_rounded, size: 30.0),
+          ),
+          Container(
+              margin: const EdgeInsets.only(top: 10.0),
+              child: Text('친구 3',
+                  style: TextStyle(color: Colors.grey[350], fontSize: 13)))
+        ],
+      ),
+      Column(
+        // mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        // Row에서는 mainAxis가 가로, crossAxis가 세로
+        // Column에서는 crossAxis가 가로, mainAxis가 세로
+        children: [
+          Container(
+            margin: const EdgeInsets.only(right: 25.0),
+            width: 55,
+            height: 55,
+            decoration: BoxDecoration(
+                color: Colors.grey[400],
+                borderRadius:
+                    const BorderRadius.all(Radius.circular(100)) //모서리를 둥글게
+                ),
+            child: const Icon(Icons.person_rounded, size: 30.0),
+          ),
+          Container(
+              margin: const EdgeInsets.only(top: 10.0, right: 25.0),
+              child: Text('친구 4',
+                  style: TextStyle(color: Colors.grey[350], fontSize: 13)))
         ],
       ),
     ],
@@ -233,11 +357,11 @@ Widget _others(BuildContext context) {
         children: [
           Container(
               width: MediaQuery.of(context).size.width,
-              height: 407,
+              height: MediaQuery.of(context).size.height,
               padding:
                   const EdgeInsets.only(top: 27.0, left: 25.0, right: 25.0),
               decoration: BoxDecoration(
-                color: Colors.grey[350],
+                color: Colors.grey[400],
                 borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(33),
                     topRight: Radius.circular(33)), //모서리를 둥글게
@@ -262,6 +386,15 @@ Widget _details() {
       Container(
           margin: const EdgeInsets.only(bottom: 23.0),
           child: _detailsPeople2()),
+      Container(
+          margin: const EdgeInsets.only(bottom: 23.0),
+          child: _detailsPeople3()),
+      Container(
+          margin: const EdgeInsets.only(bottom: 23.0),
+          child: _detailsPeople4()),
+      Container(
+          margin: const EdgeInsets.only(bottom: 23.0),
+          child: _detailsPeople5()),
       Container(
           margin: const EdgeInsets.only(bottom: 23.0),
           child: _detailsPeople3()),
@@ -409,7 +542,7 @@ Widget _icon2() {
         children: [
           Container(
               margin: const EdgeInsets.only(right: 20.0),
-              child: Image.asset("img/paperplane.png", width: 25, height: 25)),
+              child: Image.asset("img/money.png", width: 25, height: 25)),
         ],
       ),
       Column(
@@ -631,14 +764,7 @@ Widget _oneCard(BuildContext context) {
           height: 140,
           margin: const EdgeInsets.only(top: 20.0),
           decoration: const BoxDecoration(
-            color: Color(0xFF05232B),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black,
-                offset: Offset(5.0, 12.0), //(x,y)
-                blurRadius: 10.0,
-              ),
-            ],
+            color: Color(0xFF3C595B),
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(20),
                 topLeft: Radius.circular(20)), //모서리를 둥글게
@@ -650,13 +776,6 @@ Widget _oneCard(BuildContext context) {
         margin: const EdgeInsets.only(bottom: 20.0),
         decoration: BoxDecoration(
           color: Colors.grey[350],
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey[900]!,
-              offset: const Offset(10.0, 10.0), //(x,y)
-              blurRadius: 10.0,
-            ),
-          ],
           borderRadius: const BorderRadius.only(
               bottomRight: Radius.circular(20),
               bottomLeft: Radius.circular(20)), //모서리를 둥글게
@@ -730,8 +849,8 @@ Widget _stars() {
               // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
               padding: EdgeInsets.zero, // 패딩 설정
               constraints: const BoxConstraints(), // constraints
-              icon: const Icon(Icons.check_rounded),
-              color: Colors.grey[350],
+              icon: const Icon(Icons.star_rounded),
+              color: Colors.grey[400],
               iconSize: 28.0,
               onPressed: () {},
             ),
@@ -863,14 +982,7 @@ Widget _twoCard() {
           height: 140,
           margin: const EdgeInsets.only(top: 20.0),
           decoration: const BoxDecoration(
-              color: Color(0xFF123740),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black,
-                  offset: Offset(5.0, 12.0), //(x,y)
-                  blurRadius: 10.0,
-                ),
-              ],
+              color: Color(0xFF7E7354),
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(20),
                   topLeft: Radius.circular(20)) //모서리를 둥글게
@@ -881,13 +993,6 @@ Widget _twoCard() {
         height: 55,
         margin: const EdgeInsets.only(bottom: 20.0),
         decoration: BoxDecoration(
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey[900]!,
-                offset: const Offset(10.0, 10.0), //(x,y)
-                blurRadius: 10.0,
-              ),
-            ],
             color: Colors.grey[350],
             borderRadius: const BorderRadius.only(
                 bottomRight: Radius.circular(20),
@@ -987,14 +1092,7 @@ Widget _threeCard() {
           height: 140,
           margin: const EdgeInsets.only(top: 20.0),
           decoration: const BoxDecoration(
-            color: Color(0xFF05232B),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black,
-                offset: Offset(5.0, 12.0), //(x,y)
-                blurRadius: 10.0,
-              ),
-            ],
+            color: Color(0xFFB46834),
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(20),
                 topLeft: Radius.circular(20)), //모서리를 둥글게
@@ -1006,13 +1104,6 @@ Widget _threeCard() {
         margin: const EdgeInsets.only(bottom: 20.0),
         decoration: BoxDecoration(
           color: Colors.grey[350],
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey[900]!,
-              offset: const Offset(10.0, 10.0), //(x,y)
-              blurRadius: 10.0,
-            ),
-          ],
           borderRadius: const BorderRadius.only(
               bottomRight: Radius.circular(20),
               bottomLeft: Radius.circular(20)), //모서리를 둥글게
@@ -1111,7 +1202,7 @@ Widget _plusCard() {
         height: 195,
         margin: const EdgeInsets.only(top: 20.0),
         decoration: BoxDecoration(
-            color: Colors.grey[350],
+            color: Colors.grey[400],
             borderRadius: const BorderRadius.all(Radius.circular(20)) //모서리를 둥글게
             ),
         child: Row(
@@ -1119,7 +1210,7 @@ Widget _plusCard() {
           children: <Widget>[
             IconButton(
               icon: const Icon(Icons.add_rounded),
-              color: const Color(0xFF123740),
+              color: const Color(0xFF030404),
               iconSize: 60.0,
               onPressed: () {},
             ),
