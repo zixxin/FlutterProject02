@@ -1,4 +1,3 @@
-import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -11,6 +10,22 @@ class MainScreenPage extends StatefulWidget {
 }
 
 class _MainScreenPage extends State<MainScreenPage> {
+  late ScrollController _scrollController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _scrollController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size displaysize = MediaQuery.of(context).size;
@@ -20,14 +35,13 @@ class _MainScreenPage extends State<MainScreenPage> {
       //If you want to show body behind the navbar, it should be true
       extendBody: true,
       backgroundColor: const Color(0xFF030404),
-      bottomNavigationBar: FloatingNavbar(
-        backgroundColor: const Color(0xFF030404),
-        selectedItemColor: Colors.white,
-        selectedBackgroundColor: const Color(0xFF030404),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        backgroundColor: Colors.grey[400],
+        selectedItemColor: const Color(0xFF030404),
         unselectedItemColor: Colors.grey,
-        iconSize: displaysize.width * 0.08,
-        borderRadius: 20,
-        margin: const EdgeInsets.only(left: 23, right: 23),
+        selectedFontSize: 14,
+        unselectedFontSize: 14,
         currentIndex: 0, //현재 선택된 Index
         onTap: (int index) {
           // setState(() {
@@ -35,20 +49,40 @@ class _MainScreenPage extends State<MainScreenPage> {
           // });
         },
         items: [
-          FloatingNavbarItem(icon: Icons.home_rounded),
-          FloatingNavbarItem(icon: Icons.timeline_rounded),
-          FloatingNavbarItem(icon: Icons.qr_code_scanner_rounded),
-          FloatingNavbarItem(icon: Icons.notifications_outlined),
-          FloatingNavbarItem(icon: Icons.more_horiz_rounded),
+          BottomNavigationBarItem(
+            title: const Text('',
+                style: TextStyle(fontSize: 0.0, fontWeight: FontWeight.bold)),
+            icon: Icon(Icons.home_rounded, size: displaysize.width * 0.08),
+          ),
+          BottomNavigationBarItem(
+            title: const Text('', style: TextStyle(fontSize: 0.0)),
+            icon: Icon(Icons.timeline_rounded, size: displaysize.width * 0.08),
+          ),
+          BottomNavigationBarItem(
+            title: const Text('', style: TextStyle(fontSize: 0.0)),
+            icon: Icon(Icons.qr_code_scanner_rounded,
+                size: displaysize.width * 0.08),
+          ),
+          BottomNavigationBarItem(
+            title: const Text('', style: TextStyle(fontSize: 0.0)),
+            icon: Icon(Icons.notifications_outlined,
+                size: displaysize.width * 0.08),
+          ),
+          BottomNavigationBarItem(
+            title: const Text('', style: TextStyle(fontSize: 0.0)),
+            icon:
+                Icon(Icons.more_horiz_rounded, size: displaysize.width * 0.08),
+          ),
         ],
       ),
       body: ListView(
+        controller: _scrollController,
         // width: MediaQuery.of(context).size.width,
         // padding: const EdgeInsets.only(top: 70.0),
         // child: Column(
         //   mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          Container(margin: const EdgeInsets.only(top: 15.0), child: _user()),
+          Container(margin: const EdgeInsets.only(top: 10.0), child: _user()),
           Container(child: _cardSlider(context)),
           Container(
               margin: const EdgeInsets.only(bottom: 10.0), child: _sendMoney()),
@@ -165,7 +199,7 @@ Widget _sendMoney() {
                 style: TextStyle(
                     color: Colors.grey[350],
                     fontWeight: FontWeight.bold,
-                    fontSize: 18),
+                    fontSize: 17),
               )),
         ],
       ),
@@ -194,7 +228,7 @@ Widget _moreText() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(top: 3.0, right: 3.0),
+              margin: const EdgeInsets.only(right: 3.0),
               child: Text(
                 '더보기',
                 style: TextStyle(
@@ -208,7 +242,7 @@ Widget _moreText() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Container(
-              margin: const EdgeInsets.only(right: 25.0, top: 2.0),
+              margin: const EdgeInsets.only(right: 25.0),
               child: IconButton(
                 // 아래 두 줄의 코드가 IconButton의 의미없는 여백을 줄임
                 padding: EdgeInsets.zero, // 패딩 설정
@@ -357,9 +391,9 @@ Widget _others(BuildContext context) {
         children: [
           Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              height: 610,
               padding:
-                  const EdgeInsets.only(top: 27.0, left: 25.0, right: 25.0),
+                  const EdgeInsets.only(top: 25.0, left: 27.0, right: 27.0),
               decoration: BoxDecoration(
                 color: Colors.grey[400],
                 borderRadius: const BorderRadius.only(
@@ -419,7 +453,8 @@ Widget _detailsTitle() {
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: const [
-          Text('Last Transactions', style: TextStyle(fontSize: 18.0)),
+          Text('Last Transactions',
+              style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold)),
         ],
       ),
       Column(
@@ -449,7 +484,7 @@ Widget _detailsPeople1() {
     children: <Widget>[
       Column(
         // mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [_icon1()],
@@ -459,9 +494,11 @@ Widget _detailsPeople1() {
         crossAxisAlignment: CrossAxisAlignment.end,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: const [
-          Text('- 24,800 원',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+        children: [
+          const Text('-24,800원',
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('324,540원', style: TextStyle(color: Colors.grey[600])),
         ],
       ),
     ],
@@ -485,17 +522,16 @@ Widget _icon1() {
         ],
       ),
       Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // Row에서는 mainAxis가 가로, crossAxis가 세로
-        // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [
-          const Text('(주)카카오선물하기',
-              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
-          Container(height: 7),
-          Text('Thursday, 3 Feb', style: TextStyle(color: Colors.grey[600])),
-        ],
-      ),
+          // mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          // Row에서는 mainAxis가 가로, crossAxis가 세로
+          // Column에서는 crossAxis가 가로, mainAxis가 세로
+          children: [
+            const Text('(주)카카오선물하기',
+                style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+            Container(height: 7),
+            Text('Friday, 4 Feb', style: TextStyle(color: Colors.grey[600])),
+          ]),
     ],
   );
 }
@@ -517,12 +553,14 @@ Widget _detailsPeople2() {
         crossAxisAlignment: CrossAxisAlignment.end,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: const [
-          Text('+ 100,000 원',
+        children: [
+          const Text('+ 100,000 원',
               style: TextStyle(
-                  color: Color(0xFF224952),
-                  fontSize: 16.0,
+                  color: Color(0xFFB46834),
+                  fontSize: 15.0,
                   fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('349,340원', style: TextStyle(color: Colors.grey[600])),
         ],
       ),
     ],
@@ -542,21 +580,20 @@ Widget _icon2() {
         children: [
           Container(
               margin: const EdgeInsets.only(right: 20.0),
-              child: Image.asset("img/money.png", width: 25, height: 25)),
+              child: Image.asset("img/paperplane.png", width: 25, height: 25)),
         ],
       ),
       Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        // Row에서는 mainAxis가 가로, crossAxis가 세로
-        // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: [
-          const Text('용돈',
-              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
-          Container(height: 7),
-          Text('Tuesday, 1 Feb', style: TextStyle(color: Colors.grey[600])),
-        ],
-      ),
+          // mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          // Row에서는 mainAxis가 가로, crossAxis가 세로
+          // Column에서는 crossAxis가 가로, mainAxis가 세로
+          children: [
+            const Text('용돈',
+                style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+            Container(height: 7),
+            Text('Friday, 4 Feb', style: TextStyle(color: Colors.grey[600])),
+          ]),
     ],
   );
 }
@@ -578,9 +615,11 @@ Widget _detailsPeople3() {
         crossAxisAlignment: CrossAxisAlignment.end,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: const [
-          Text('- 17,600 원',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+        children: [
+          const Text('- 17,600 원',
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('449,340원', style: TextStyle(color: Colors.grey[600])),
         ],
       ),
     ],
@@ -636,9 +675,11 @@ Widget _detailsPeople4() {
         crossAxisAlignment: CrossAxisAlignment.end,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: const [
-          Text('- 1,100 원',
-              style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold)),
+        children: [
+          const Text('- 1,100 원',
+              style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('466,940원', style: TextStyle(color: Colors.grey[600])),
         ],
       ),
     ],
@@ -694,12 +735,14 @@ Widget _detailsPeople5() {
         crossAxisAlignment: CrossAxisAlignment.end,
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
-        children: const [
-          Text('+ 3,510 원',
+        children: [
+          const Text('+ 3,510 원',
               style: TextStyle(
-                  fontSize: 16.0,
-                  color: Color(0xFF224952),
+                  color: Color(0xFFB46834),
+                  fontSize: 15.0,
                   fontWeight: FontWeight.bold)),
+          Container(height: 7),
+          Text('468,040원', style: TextStyle(color: Colors.grey[600])),
         ],
       ),
     ],
@@ -719,7 +762,7 @@ Widget _icon5() {
         children: [
           Container(
               margin: const EdgeInsets.only(right: 20.0),
-              child: Image.asset("img/money.png", width: 25, height: 25)),
+              child: Image.asset("img/paperplane.png", width: 25, height: 25)),
         ],
       ),
       Column(
@@ -728,7 +771,7 @@ Widget _icon5() {
         // Row에서는 mainAxis가 가로, crossAxis가 세로
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
-          const Text('(주)카카오선물하기',
+          const Text('(주)카카오',
               style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold)),
           Container(height: 7),
           Text('Friday, 21 Jan', style: TextStyle(color: Colors.grey[600])),
@@ -872,7 +915,7 @@ Widget _money1(BuildContext context) {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Text(
-            '87,960 원',
+            '324,540 원',
             style: TextStyle(
                 color: Colors.grey[350],
                 fontWeight: FontWeight.bold,
@@ -1045,7 +1088,7 @@ Widget _money2() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Text(
-            '23,850 원',
+            '273,850 원',
             style: TextStyle(
                 color: Colors.grey[350],
                 fontWeight: FontWeight.bold,
@@ -1155,7 +1198,7 @@ Widget _money3() {
         // Column에서는 crossAxis가 가로, mainAxis가 세로
         children: [
           Text(
-            '324,540 원',
+            '87,960 원',
             style: TextStyle(
                 color: Colors.grey[350],
                 fontWeight: FontWeight.bold,

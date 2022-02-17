@@ -67,12 +67,9 @@ flutter:
     - img/app_logo.png
     - img/master_card.png
     - img/collect.png
-    - img/send.png
-    - img/withdraw.png
-    - img/more.png
-    - img/paperplane.png
     - img/creditcard.png
     - img/money.png
+    - img/paperplane.png
 
 flutter_icons:
   android: "launcher_icon"
